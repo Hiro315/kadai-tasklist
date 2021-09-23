@@ -45,7 +45,7 @@ class TasksController extends Controller
     {
         
         $request->validate([
-            'status' => 'required|max:255',
+            'status' => 'required|max:255',   // 追加
             'content' => 'required|max:255',
         ]);
         //
@@ -67,11 +67,11 @@ class TasksController extends Controller
     public function show($id)
     {
         //
-        $tasks = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
 
         // メッセージ詳細ビューでそれを表示
         return view('tasks.show', [
-            'tasks' => $tasks,
+            'task' => $task,
         ]);
     }
 
@@ -84,11 +84,11 @@ class TasksController extends Controller
     public function edit($id)
     {
         //
-        $tasks = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
 
         // メッセージ編集ビューでそれを表示
         return view('tasks.edit', [
-            'tasks' => $tasks,
+            'task' => $task,
         ]);
     }
 
